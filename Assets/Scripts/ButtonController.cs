@@ -30,5 +30,28 @@ public class ButtonController : MonoBehaviour
             else
                 buttons[i].color = Color.white;
         }
+
+        /*if (GetComponent<GameManager>().badDialogue == false)
+        {
+            // Fill Amount on press
+            for (int i = 0; i < keycode.Length; i++)
+            {
+                if (Input.GetKeyDown(keycode[i]))
+                {
+                    GetComponent<GameManager>().bar.fillAmount += GetComponent<GameManager>().fillAmountOnPress;
+                }
+            }
+
+            // Change color on press
+            for (int i = 0; i < keycode.Length; i++)
+            {
+                if (Input.GetKey(keycode[i]))
+                {
+                    buttons[i].color = Color.grey;
+                }
+                else
+                    buttons[i].color = Color.white;
+            }
+        }*/
     }
 }
