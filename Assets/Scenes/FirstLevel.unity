@@ -215,6 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 44920748}
   - component: {fileID: 44920749}
+  - component: {fileID: 44920750}
   m_Layer: 5
   m_Name: Dialogue_Panel
   m_TagString: Untagged
@@ -250,6 +251,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44920747}
   m_CullTransparentMesh: 0
+--- !u!95 &44920750
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44920747}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3ab9934bec7aa6e4680c9ebc48f28c99, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &144296529
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +994,7 @@ GameObject:
   - component: {fileID: 786015464}
   - component: {fileID: 786015465}
   - component: {fileID: 786015466}
+  - component: {fileID: 786015467}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1009,7 +1030,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bar: {fileID: 1971127532}
   fillAmountOnPress: 0.1
-  dialogue: {fileID: 676106689}
   stressText: {fileID: 432153138}
 --- !u!114 &786015466
 MonoBehaviour:
@@ -1027,6 +1047,23 @@ MonoBehaviour:
   - {fileID: 659298313}
   - {fileID: 1039539867}
   keycode: 7a00000078000000
+--- !u!114 &786015467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786015463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: befedc81f04279d40970c9a0fafdc4c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+  - Bla Bla Bla, faccio cose, Bla Bla Bla, Insomma, Bla Bla
+  - Quindi Bla Bla, Capelli, Bla Bla Bla
+  dialogueText: {fileID: 676106690}
+  dialogueAnim: {fileID: 44920750}
 --- !u!1 &1005529396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,7 +1855,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6f357e251af22e1489469ebc0cde48b0, type: 3}
-  m_Color: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
+  m_Color: {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
