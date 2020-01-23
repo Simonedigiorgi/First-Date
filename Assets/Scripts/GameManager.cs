@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
             if (!isRedZone)
             {
                 isRedZone = true;
-                GetComponent<DialogueManager>().RandomDialog();
+                GetComponent<DialogueManager>().RandomDialog(false);
             }
 
             if (Camera.main.transform.position.y >= -2f)
@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
             if (isRedZone)
             {
                 isRedZone = false;
+                GetComponent<DialogueManager>().RandomDialog(false);
             }
 
             if (Camera.main.transform.position.y <= 0f)

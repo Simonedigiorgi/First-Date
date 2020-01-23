@@ -6,13 +6,16 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     public string[] dialogue;
+
+    public string normalDialogue;
+
     public Text dialogueText;
 
     private float timeLeft = 3;
 
     public Animator dialogueAnim;
 
-    private bool isRandomized;
+    private bool isRandomized = true;
 
     private void Update()
     {
@@ -22,16 +25,24 @@ public class DialogueManager : MonoBehaviour
             if (timeLeft < 0)
             {
                 timeLeft = 3;
+                RandomDialog(true);
             }
         }
     }
 
-    public void RandomDialog()
+    public void RandomDialog(/*bool isBadDialogue,*/bool isAnimation)
     {
-        isRandomized = true;
         dialogueText.text = dialogue[Random.Range(0, dialogue.Length)];
-        dialogueAnim.Play("Right_Popup");
+        /*if (isBadDialogue)
+        {
+            dialogueText.text = dialogue[Random.Range(0, dialogue.Length)];
+        }
+        else
+            dialogueText.text = normalDialogue;*/
 
-
+        if (isAnimation)
+        {
+            dialogueAnim.Play("Right_Popup");
+        }
     }
 }
