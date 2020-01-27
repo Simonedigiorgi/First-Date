@@ -7,15 +7,18 @@ public class DialogueManager : MonoBehaviour
 {
     public string[] dialogue;
 
-    public string normalDialogue;
+    //public string normalDialogue;
 
     public Text dialogueText;
 
     private float timeLeft = 3;
 
     public Animator dialogueAnim;
+    public Animator maleDialogueAnim;
 
     private bool isRandomized = true;
+    public Text maleText;
+    public string[] maleDialogues;
 
     private void Update()
     {
@@ -25,24 +28,28 @@ public class DialogueManager : MonoBehaviour
             if (timeLeft < 0)
             {
                 timeLeft = 3;
-                RandomDialog(true);
+                RandomDialog();
             }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            MaleDialogue();
         }
     }
 
-    public void RandomDialog(/*bool isBadDialogue,*/bool isAnimation)
+    public void RandomDialog()
     {
         dialogueText.text = dialogue[Random.Range(0, dialogue.Length)];
-        /*if (isBadDialogue)
-        {
-            dialogueText.text = dialogue[Random.Range(0, dialogue.Length)];
-        }
-        else
-            dialogueText.text = normalDialogue;*/
+        dialogueAnim.Play("Right_Popup");
+    }
 
-        if (isAnimation)
+    public void MaleDialogue()
+    {
+        if (!maleText.enabled)
         {
-            dialogueAnim.Play("Right_Popup");
+            maleDialogueAnim.Play("Male_Popup");
+            maleText.text = maleDialogues[Random.Range(0, maleDialogues.Length)];
         }
     }
 }

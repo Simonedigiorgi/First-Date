@@ -5,15 +5,16 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public Girl girl;
+    public Transform scaleBar;
+
     public Image bar;
     private float limitFill = 0.5f; // Limit of the fillBar before the camera move
-
     private float increaseValue = 0.3f; // Initial speed
-    private float maxIncreaseValue = 0.9f; // Max Speed value of the fillBar
-    private float increaseValueAmount = 0.01f; // Add difficulty
+
     public float fillAmountOnPress;
 
-    private float timeLeft = 3; // Increase difficulty every TOT seconds
+    private float timeLeft; // Increase difficulty every TOT seconds
     private float timeBeforeBadDialogue = 10;
 
     private float cameraUpSpeed = 0.4f;
@@ -25,19 +26,22 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        timeLeft = girl.timeIncreaseDifficulty;
         stressText.text = "" + increaseValue.ToString("0.0");
         Vector3 mainCamera = Camera.main.transform.position;
     }
 
     void Update()
     {
+        scaleBar.localScale = new Vector2(bar.fillAmount / limitFill, 1);
+
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
-            timeLeft = 3;
-            if (increaseValue <= maxIncreaseValue)
+            timeLeft = girl.timeIncreaseDifficulty;
+            if (increaseValue <= girl.maxIncreaseValue)
             {
-                increaseValue += increaseValueAmount;
+                increaseValue += girl.increaseValueAmount;
 
                 //animazione!!
                 /*if(bar.fillAmount < limitFill)
@@ -55,7 +59,7 @@ public class GameManager : MonoBehaviour
             if (!isRedZone)
             {
                 isRedZone = true;
-                GetComponent<DialogueManager>().RandomDialog(false);
+                GetComponent<DialogueManager>().RandomDialog();
             }
 
             if (Camera.main.transform.position.y >= -2f)
@@ -76,7 +80,7 @@ public class GameManager : MonoBehaviour
             if (isRedZone)
             {
                 isRedZone = false;
-                GetComponent<DialogueManager>().RandomDialog(false);
+                GetComponent<DialogueManager>().RandomDialog();
             }
 
             if (Camera.main.transform.position.y <= 0f)
